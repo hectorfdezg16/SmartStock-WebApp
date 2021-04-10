@@ -112,35 +112,12 @@ userCtrl.signUp = async (req, res) => {
     res.status(200).json({token})
 }
 
-//validated function to private routes --- verify token -/- express routing
-function verifyToken(req, res, next) {
-
-    console.log(req.headers.authorization)
-
-    //if you don't have authorization field ---> you can't access to the route
-    if(!req.headers.authorization){
-        return res.status(401).send('Unauthorized acces!');
-    }
-
-    //exemple authorization header field = ['Bearer', 'token...']
-    const token = req.headers.authorization.split(' ')[1]
-    if(token == 'null'){
-        return res.status(401).send('Unauthorized acces!');
-    }
-
-    //we need the token of the user and your private key ---> checking...
-    const payload = jwt.verify(token, 'secretkey')
-    console.log(payload);
-
-    //we save id of the payload on a property
-    req.userId = payload._id;
-    next();
+userCtrl.getBackOffice = (req, res)=>{
+    res.status(200).send('All OK!');
 }
 
-//private test routes -/- get
-/*userCtrl.getBackOffice('/admin/users', verifyToken, (req, res)=>{})
-userCtrl.getProfile('/user/profile', verifyToken, (req, res)=>{
-    req.send(req.userId);
-})*/
+userCtrl.getProfile = (req, res)=>{
+    res.status(200).send('All OK!');
+}
 
 module.exports = userCtrl;
