@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head'); %>
+</head>
+<body class="container">
+
+<header>
+    <%- include('../partials/header'); %>
+</header>
+
+<main>
+    <div class="jumbotron">
+        <form method="POST">
+            <label for="newPass">New password</label><br>
+            <input type="password" name="newPass" value="" placeholder="New password" autofocus=true><br><br>
+            <label for="confNewPass">Confirm password</label><br>
+            <input type="password" name="confNewPass" value="" placeholder="Confirm password"><br><br>
+            <input type="submit" class="btn btn-primary" value="Update Password">
+        </form>
+    </div>
+</main>
+
+<footer>
+    <%- include('../partials/footer'); %>
+</footer>
+
+</body>
+</html>

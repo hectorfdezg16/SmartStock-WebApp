@@ -1,1 +1,7 @@
+backend/node_modules
+backend/package-lock.json
+package-lock.json
+backend/.env
+backend/api.rest
+api.rest
 node_modules

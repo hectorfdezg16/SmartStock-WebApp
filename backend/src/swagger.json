@@ -1,0 +1,273 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "SmartStock API",
+        "description": "This is the API of our team! Enjoy it!",
+        "license": {
+            "name": "SmartStock Web App",
+            "url": "http://eag1eetac.wordpress.com"
+        }
+    },
+    "host": "localhost:4000",
+    "basePath": "/api",
+    "tags": [
+        {
+            "name": "Users",
+            "description": "API Users"
+        }
+    ],
+    "schemes": [
+        "http",
+        "https"
+    ],
+    "consumes":[
+        "application/json"
+    ],
+    "produces":[
+        "application/json"
+    ],
+    "paths": {
+        "/users":{
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Get all users",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Users"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Create a new user",
+                "parameters": [
+                    {
+                        "in":"body",
+                        "name": "body",
+                        "description": "We want create a user",
+                        "schema": {
+                            "$ref": "#/definitions/User"
+                        }
+                    }
+                ],
+                "produces":[
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/User"
+                        }
+                    },
+                    "400": {
+                        "description": "Error!"
+                    }
+                }
+            }
+        },
+        "/admins":{
+            "get": {
+                "tags": [
+                    "Admins"
+                ],
+                "summary": "Get all admins",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Admins"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Admins"
+                ],
+                "summary": "Create a new admin",
+                "parameters": [
+                    {
+                        "in":"body",
+                        "name": "body",
+                        "description": "We want create a admin",
+                        "schema": {
+                            "$ref": "#/definitions/Admin"
+                        }
+                    }
+                ],
+                "produces":[
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/Admin"
+                        }
+                    },
+                    "400": {
+                        "description": "Error!"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "Admin": {
+            "type": "object",
+            "properties": {
+                "adminName": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                },
+                "role": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "Admins": {
+            "type": "object",
+            "properties": {
+                "users": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#definitions/Admin"
+                    }
+                }
+            }
+        },
+        "User": {
+            "type": "object",
+            "properties": {
+                "userName": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                },
+                "role": {
+                    "type": "string"
+                },
+                "bank": {
+                    "type": "string"
+                },
+                "signUpWithGoogle": {
+                    "type": "boolean"
+                },
+                "signUpWithFacebook": {
+                    "type": "boolean"
+                },
+                "location": {
+                    "type": "string"
+                },
+                "balance": {
+                    "type": "number"
+                },
+                "avatar": {
+                    "type": "string"
+                }
+            }
+        },
+        "Users": {
+            "type": "object",
+            "properties": {
+                "users": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$ref": "#definitions/User"
+                    }
+                }
+            }
+        },
+        "Lot": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "dimensions": {
+                    "type": "string"
+                },
+                "weight": {
+                    "type": "number"
+                },
+                "qty": {
+                    "type": "number"
+                },
+                "price": {
+                    "type": "number"
+                },
+                "isFragile": {
+                    "type": "boolean"
+                },
+                "info": {
+                    "type": "string"
+                },
+                "minimumQty": {
+                    "type": "number"
+                },
+                "businessItem": {
+                    "type": "string"
+                },
+                "userItem": {
+                    "type": "string"
+                }
+            }
+        },
+        "Delivery": {
+            "type": "object",
+            "properties": {
+                "lotItem": {
+                    "type": "string"
+                },
+                "originLocation": {
+                    "type": "string"
+                },
+                "destinationLocation": {
+                    "type": "string"
+                },
+                "destinationItem": {
+                    "type": "string"
+                },
+                "deliveryDate": {
+                    "type": "string"
+                },
+                "isPicked": {
+                    "type": "boolean"
+                },
+                "isDelivered": {
+                    "type": "boolean"
+                },
+                "businessItem": {
+                    "type": "string"
+                },
+                "isAssigned": {
+                    "type": "boolean"
+                },
+                "userItem": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                }
+            }
+        }      
+    }
+}
